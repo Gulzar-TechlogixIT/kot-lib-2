@@ -1,0 +1,15 @@
+name: Publish Kotlin library
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: read
+  packages: write
+jobs:
+  publish:
+    uses: Gulzar-TechlogixIT/common/.github/workflows/publish-kotlin-package.yml@main
+    with:
+      java-version: "21"
+    secrets:
+      GH_PACKAGES_USER: ${{ secrets.GH_PACKAGES_USER }}
+      GH_PACKAGES_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}

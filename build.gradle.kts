@@ -1,4 +1,4 @@
-﻿plugins {
+plugins {
     kotlin("jvm") version "2.1.20"
     `maven-publish`
 }
@@ -31,5 +31,16 @@ publishing {
             version = project.version.toString()
         }
     }
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/Gulzar-TechlogixIT/kot-lib-2")
+            credentials {
+                username = providers.gradleProperty("githubPackagesUsername").orNull
+                    ?: System.getenv("GITHUB_ACTOR")
+                password = providers.gradleProperty("githubPackagesPassword").orNull
+                    ?: System.getenv("GH_PACKAGES_TOKEN")
+            }
+        }
+    }
 }
-
