@@ -1,0 +1,4 @@
+
+# Generated Gradle files
+.gradle/
+build/
